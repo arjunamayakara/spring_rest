@@ -1,11 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage('Build') { 
+        stage('build') {
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                bat 'mvn --version'
+                bat 'echo "Hello World"'
+                bat '''
+                    echo "Multiline shell steps works too"
+                '''
+                bat 'mvn clean install'
             }
         }
-        
     }
 }
